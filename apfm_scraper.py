@@ -17,11 +17,30 @@ def getPageTitle(soup):
     return soup.title.string.strip()
 
 def getCommunityName(soup):
-    return soup.find('div',class_='community-desc').h1.text
+    return soup.find(class_='community-desc').h1.text
 
 def getMetaDescription(soup):
     meta = soup.find_all('meta')
     return listToString([meta.attrs['content'] for meta in meta if 'name' in meta.attrs and meta.attrs['name'] == 'description'])
 
 def getCommunityStreetAddress(soup):
-    return soup.find('div', class_='community-desc').p.text
+    return soup.find( class_='community-desc').p.text
+
+def getCommunityCity(CommunityStreetAddress):
+    city= CommunityStreetAddress.split()
+    return city[-3]
+
+def getCommunityState(CommunityStreeAddress):
+    state=CommunityStreeAddress.split()
+    return state[-2]
+
+def getCommunityZipCode(CommunityStreeAddress):
+    state = CommunityStreeAddress.split()
+    return state[-1]
+
+def getCommunityContent(soup):
+    content= soup.find('div',class_='community-detail').get_text().strip()
+    return content.replace('Now offering virtual tours. Call us now to schedule.','')
+
+def getNumberofReviews(soup):
+    return soup.find(class_='reviews-count-container').find("span").text.strip()

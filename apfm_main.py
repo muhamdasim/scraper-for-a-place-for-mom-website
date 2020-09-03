@@ -9,12 +9,7 @@ def allUrls():
     all_urls=[]
     for i in df['Address']:
         all_urls.append(i)
-
     return all_urls
-
-
-
-
 #function_calling
 allUrls()
 #Requesting Urls
@@ -29,3 +24,15 @@ print(scraper.getCommunityName(soup))
 print(scraper.getMetaDescription(soup))
 #Fetching Community Street Address
 print(scraper.getCommunityStreetAddress(soup))
+#Fetching Community City
+print(scraper.getCommunityCity(scraper.getCommunityStreetAddress(soup)))
+#Fetching Community State
+print(scraper.getCommunityState(scraper.getCommunityStreetAddress(soup)))
+#Fetching Community Zip Code
+print(scraper.getCommunityZipCode(scraper.getCommunityStreetAddress(soup)))
+#Fetching Images Urls
+#awaiting Client Response
+#Fetching Community Detail
+print(scraper.getCommunityContent(soup))
+#Fetching No OF Reviews
+print(scraper.getNumberofReviews(soup))
