@@ -9,7 +9,7 @@ def listToString(s):
     return (str1.join(s))
 
 def pageRequests():
-    r = requests.get('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
+    r = requests.get('https://www.aplaceformom.com/community/paseo-highlands-alh-151966')
     soup = bs4.BeautifulSoup(r.text, 'lxml')
     return soup
 
@@ -44,3 +44,9 @@ def getCommunityContent(soup):
 
 def getNumberofReviews(soup):
     return soup.find(class_='reviews-count-container').find("span").text.strip()
+
+def getAverageReviewScore(soup):
+    return soup.find(class_='score-container').find("span").text.strip()
+
+def getCareTypesProvided(soup):
+    return 0

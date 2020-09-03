@@ -36,3 +36,7 @@ print(scraper.getCommunityZipCode(scraper.getCommunityStreetAddress(soup)))
 print(scraper.getCommunityContent(soup))
 #Fetching No OF Reviews
 print(scraper.getNumberofReviews(soup))
+#Fetching Average Review Score
+print(scraper.getAverageReviewScore(soup))
+
+print(soup.findAll(class_='flex-item'))
