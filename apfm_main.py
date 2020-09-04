@@ -5,7 +5,7 @@ import apfm_scraper as scraper
 df=pd.read_csv('apfm-urls-final.csv')
 
 
-#function to push all the urls to list
+#function to push all urls to list
 def allUrls():
     all_urls=[]
     for i in df['Address']:
