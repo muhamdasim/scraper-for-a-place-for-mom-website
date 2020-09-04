@@ -38,5 +38,5 @@ print(scraper.getCommunityContent(soup))
 print(scraper.getNumberofReviews(soup))
 #Fetching Average Review Score
 print(scraper.getAverageReviewScore(soup))
-
-print(soup.findAll(class_='flex-item'))
+#Fetching Care Types Provided
+print(scraper.getCareTypesProvided(soup))
