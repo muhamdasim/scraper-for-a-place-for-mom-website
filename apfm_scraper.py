@@ -57,12 +57,16 @@ def getCommunityImages(soup):
     text=soup.find(class_='js-react-on-rails-component').get_text()
     js=json.loads(text)
     image_urls=[]
+    final_url=""
     url='https://www.aplaceformom.com/images/'
     for i in js['data']['ImageSet']:
         image_urls.append(url+str(i['LargeImageId']))
 
     for i in image_urls:
-        print(i)
+        final_url += i + ","
+
+    return final_url[:-1]
+
 
 def getCommunityContent(soup):
     content= soup.find('div',class_='community-detail').get_text().strip()
