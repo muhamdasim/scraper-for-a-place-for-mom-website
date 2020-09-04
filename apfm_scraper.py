@@ -95,3 +95,5 @@ def getCareTypesProvided(soup):
         str += i + ","
 
     return str[:-1]
+
+
