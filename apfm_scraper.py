@@ -1,5 +1,7 @@
 import requests
 import bs4
+import re
+import json
 
 def listToString(s):
     # initialize an empty string
@@ -11,6 +13,7 @@ def listToString(s):
 def pageRequests():
     r = requests.get('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
     soup = bs4.BeautifulSoup(r.text, 'lxml')
+    #print(soup.prettify())
     return soup
 
 def getPageTitle(soup):
@@ -39,12 +42,15 @@ def getCommunityZipCode(CommunityStreeAddress):
     return state[-1]
 
 def getCommunityImages(soup):
-    print(soup.text)
-    return 0
+    text=soup.find(class_='js-react-on-rails-component').get_text()
+    js=json.loads(text)
+    for i in js['data']['ImageSet']:
 
+
+    return 0
 def getCommunityContent(soup):
     content= soup.find('div',class_='community-detail').get_text().strip()
-    return content.replace('Now offering virtual tours. Call us now to schedule.','')
+    return content.replace('Now offering virtual tours. Call us now to schedule.','').strip()
 
 def getNumberofReviews(soup):
     return soup.find(class_='reviews-count-container').find("span").text.strip()
