@@ -2,6 +2,19 @@ import requests
 import bs4
 import re
 import json
+import pandas as pd
+
+
+#load urls from the file
+df=pd.read_csv('apfm-urls-final.csv')
+
+
+#function to push all urls to list
+def allUrls():
+    all_urls=[]
+    for i in df['Address']:
+        all_urls.append(i)
+    return all_urls
 
 def listToString(s):
     # initialize an empty string
@@ -13,7 +26,6 @@ def listToString(s):
 def pageRequests():
     r = requests.get('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
     soup = bs4.BeautifulSoup(r.text, 'lxml')
-    #print(soup.prettify())
     return soup
 
 def getPageTitle(soup):
