@@ -38,6 +38,10 @@ def getCommunityZipCode(CommunityStreeAddress):
     state = CommunityStreeAddress.split()
     return state[-1]
 
+def getCommunityImages(soup):
+    print(soup.text)
+    return 0
+
 def getCommunityContent(soup):
     content= soup.find('div',class_='community-detail').get_text().strip()
     return content.replace('Now offering virtual tours. Call us now to schedule.','')
@@ -48,9 +52,24 @@ def getNumberofReviews(soup):
 def getAverageReviewScore(soup):
     return soup.find(class_='score-container').find("span").text.strip()
 
+def getCommunityAmenities(soup):
+    amenities=[]
+    str=""
+    for i in soup.find(class_='List-order').findAll('li')[1:]:
+        amenities.append(i.get_text())
+
+    for i in amenities:
+        str+=i+","
+
+    return str[:-1]
+
 def getCareTypesProvided(soup):
+    caretype = []
+    str = ""
+    for i in soup.find_all(class_='on'):
+        caretype.append(i.get_text())
 
-    for i in soup.find_all(class_='List-order'):
-        print(i)
+    for i in caretype:
+        str += i + ","
 
-    return 0
+    return str[:-1]

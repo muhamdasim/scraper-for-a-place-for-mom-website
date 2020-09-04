@@ -31,12 +31,14 @@ print(scraper.getCommunityState(scraper.getCommunityStreetAddress(soup)))
 #Fetching Community Zip Code
 print(scraper.getCommunityZipCode(scraper.getCommunityStreetAddress(soup)))
 #Fetching Images Urls
-#awaiting Client Response
+print(scraper.getCommunityImages(soup))
 #Fetching Community Detail
 print(scraper.getCommunityContent(soup))
 #Fetching No OF Reviews
 print(scraper.getNumberofReviews(soup))
 #Fetching Average Review Score
 print(scraper.getAverageReviewScore(soup))
-#Fetching Care Types Provided
+#Fetching Care Types
 print(scraper.getCareTypesProvided(soup))
+#Fetching Community Amenities
+print(scraper.getCommunityAmenities(soup))
