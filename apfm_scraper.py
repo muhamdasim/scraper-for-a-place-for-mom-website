@@ -44,10 +44,14 @@ def getCommunityZipCode(CommunityStreeAddress):
 def getCommunityImages(soup):
     text=soup.find(class_='js-react-on-rails-component').get_text()
     js=json.loads(text)
+    image_urls=[]
+    url='https://www.aplaceformom.com/images/'
     for i in js['data']['ImageSet']:
+        image_urls.append(url+str(i['LargeImageId']))
 
+    for i in image_urls:
+        print(i)
 
-    return 0
 def getCommunityContent(soup):
     content= soup.find('div',class_='community-detail').get_text().strip()
     return content.replace('Now offering virtual tours. Call us now to schedule.','').strip()
