@@ -22,8 +22,7 @@ noOfReviews=[]
 averageProfileScore=[]
 careTypesProvided=[]
 communityAmenities=[]
-
-soup=scraper.pageRequests('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
+soup=scraper.pageRequests('https://www.aplaceformom.com/community/aegis-on-madison-1369604')
 scraper.test(soup)
 #
 # for i in l:

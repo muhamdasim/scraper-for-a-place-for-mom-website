@@ -24,7 +24,7 @@ def listToString(s):
     return (str1.join(s))
 
 def pageRequests(url):
-    r = requests.get(url)
+    r=requests.get(url)
     soup = bs4.BeautifulSoup(r.text, 'lxml')
     return soup
 
