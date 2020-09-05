@@ -28,7 +28,7 @@ fl=[]
 with open("merrill-gardens-at-first-hill-71358.html",encoding='utf-8') as f:
   fl.append(BeautifulSoup(f,'lxml'))
 
-
+s
 
 for i in fl:
     soup=i
