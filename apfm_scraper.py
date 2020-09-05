@@ -108,7 +108,7 @@ def getCareTypesProvided(soup):
 def getLicenseNo(soup):
     text = soup.find(class_='js-react-on-rails-component').get_text()
     js = json.loads(text)
-    return js['data']['licenseNo']
+    return js['data']['LicenseNumber']
 
 def test(soup):
     text = soup.find(class_='js-react-on-rails-component').get_text()
