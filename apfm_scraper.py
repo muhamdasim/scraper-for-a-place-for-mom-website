@@ -6,11 +6,11 @@ import pandas as pd
 
 
 #load urls from the file
-df=pd.read_csv('apfm-urls-final.csv')
 
 
 #function to push all urls to list
 def allUrls():
+    df = pd.read_csv('tests.csv')
     all_urls=[]
     for i in df['Address']:
         all_urls.append(i)
@@ -23,8 +23,8 @@ def listToString(s):
     # return string
     return (str1.join(s))
 
-def pageRequests():
-    r = requests.get('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
+def pageRequests(url):
+    r = requests.get(url)
     soup = bs4.BeautifulSoup(r.text, 'lxml')
     return soup
 
@@ -38,20 +38,25 @@ def getMetaDescription(soup):
     meta = soup.find_all('meta')
     return listToString([meta.attrs['content'] for meta in meta if 'name' in meta.attrs and meta.attrs['name'] == 'description'])
 
+
+
 def getCommunityStreetAddress(soup):
     return soup.find( class_='community-desc').p.text
 
-def getCommunityCity(CommunityStreetAddress):
-    city= CommunityStreetAddress.split()
-    return city[-3]
+def getCommunityCity(soup):
+    text = soup.find(class_='js-react-on-rails-component').get_text()
+    js = json.loads(text)
+    return js['data']['Locality']
 
-def getCommunityState(CommunityStreeAddress):
-    state=CommunityStreeAddress.split()
-    return state[-2]
+def getCommunityState(soup):
+    text = soup.find(class_='js-react-on-rails-component').get_text()
+    js = json.loads(text)
+    return js['data']['RegionCode']
 
-def getCommunityZipCode(CommunityStreeAddress):
-    state = CommunityStreeAddress.split()
-    return state[-1]
+def getCommunityZipCode(soup):
+    text = soup.find(class_='js-react-on-rails-component').get_text()
+    js = json.loads(text)
+    return js['data']['PostalCode']
 
 def getCommunityImages(soup):
     text=soup.find(class_='js-react-on-rails-component').get_text()
