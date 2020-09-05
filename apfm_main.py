@@ -1,11 +1,12 @@
 import apfm_scraper as scraper
 import  csv
 from bs4 import BeautifulSoup
+import time
+
+
 
 # function_calling
-
-l=urls = open('xx.txt').read().splitlines()
-
+l=urls = open('data.txt').read().splitlines()
 url=[]
 pageTitle=[]
 metaDescription=[]
@@ -23,6 +24,7 @@ communityAmenities=[]
 licenseNo=[]
 
 
+start=time.time()
 for idx, i in enumerate(l):
     try:
         print("Fetching No:",idx," ",i)
@@ -61,6 +63,9 @@ for idx, i in enumerate(l):
     except:
         continue
 
+
+end=time.time()
+print("Total Time:",end-start)
 
 
 with open("apfm-data.csv", "w",newline='',encoding="utf-8") as csvFile:
