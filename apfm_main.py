@@ -23,7 +23,7 @@ averageProfileScore=[]
 careTypesProvided=[]
 communityAmenities=[]
 
-soup=scraper.pageRequests(l[0])
+soup=scraper.pageRequests('https://www.aplaceformom.com/community/merrill-gardens-at-first-hill-71358')
 scraper.test(soup)
 #
 # for i in l:
