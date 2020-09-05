@@ -112,4 +112,4 @@ def test(soup):
     for i in js['data']:
         print(i)
 
-    print(js['data']['LicenseNumber'])
+    print(js['data']['CommunityRoomPrices'])
