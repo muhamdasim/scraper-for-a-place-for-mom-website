@@ -22,19 +22,14 @@ noOfReviews=[]
 averageProfileScore=[]
 careTypesProvided=[]
 communityAmenities=[]
+licenseNo=[]
 
-fl=[]
 
-with open("merrill-gardens-at-first-hill-71358.html",encoding='utf-8') as f:
-  fl.append(BeautifulSoup(f,'lxml'))
-
-s
-
-for i in fl:
-    soup=i
+for i in l:
+    url.append(i)
     # Fetching Data
     #print("Fetching:",i)
-    #soup = scraper.pageRequests(i)
+    soup = scraper.pageRequests(i)
     # Fetching Page Title
     pageTitle.append(scraper.getPageTitle(soup))
     # Fetching Community Name
@@ -61,5 +56,14 @@ for i in fl:
     careTypesProvided.append(scraper.getCareTypesProvided(soup))
     # Fetching Community Amenities
     communityAmenities.append(scraper.getCommunityAmenities(soup))
+    #Fetching License No
+    licenseNo.append(scraper.getLicenseNo(soup))
 
 
+
+with open("apfm-data.csv", "w",newline='',encoding="utf-8") as csvFile:
+    fieldnames = ['url','pageTitle','metaDescription','communityName','communityStreetAddress','communityCity','communityState','communityZipCode','communityImages','communityContent','noOfReviews','averageProfileScore','careTypesProvided','communityAmenities','licenseNo']
+    writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
+    writer.writeheader()
+    for link,pTitle,mDescription,cName,cStreetAddress,cCity,cState,cCode,cImages,cContent,nReviews,aScore,cProvided,cAmenities,lNo in zip(url,pageTitle,communityName,metaDescription,communityStreetAddress,communityCity,communityState,communityZipCode,communityImages,communityContent,noOfReviews,averageProfileScore,careTypesProvided,communityAmenities,licenseNo):
+        writer.writerow({'url':link,'pageTitle':pTitle,'metaDescription':mDescription,'communityName':cName,'communityStreetAddress':cStreetAddress,'communityCity':cCity,'communityState':cState,'communityZipCode':cCode,'communityImages':cImages,'communityContent':cContent,'noOfReviews':nReviews,'averageProfileScore':aScore,'careTypesProvided':cProvided,'communityAmenities':cAmenities,'licenseNo':lNo})
