@@ -1,4 +1,4 @@
-# scraper-for-a-place-for-mom-websit
+# scraper-for-a-place-for-mom-website
 
 Add community pages in page links.txt
 
