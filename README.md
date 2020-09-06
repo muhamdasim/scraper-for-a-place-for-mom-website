@@ -1,10 +1,10 @@
 # scraper-for-a-place-for-mom-website
 
-Add community pages in page links.txt
+**Add community pages in page links.txt**
 
 Fields the Scraper is Scraping:
 
-Page Title
+**Page Title
 Meta Description
 Community Name
 Community Street Address
@@ -17,8 +17,8 @@ Number of Reviews
 Average Review Score
 Care Types Provided
 Community Amenities
-Community License No
+Community License No**
 
 
-Script is tested for 10,000+ community Pages.
+Script is tested for **10,000+** community Pages.
 
