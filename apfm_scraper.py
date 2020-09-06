@@ -110,10 +110,3 @@ def getLicenseNo(soup):
     js = json.loads(text)
     return js['data']['LicenseNumber']
 
-def test(soup):
-    text = soup.find(class_='js-react-on-rails-component').get_text()
-    js = json.loads(text)
-    for i in js['data']:
-        print(i)
-
-    print(js['data']['CommunityRoomPrices'])
